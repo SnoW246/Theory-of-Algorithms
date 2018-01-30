@@ -1,0 +1,57 @@
+#lang racket
+
+; Module: Theory of Algorithms
+; Problem Sheet: Racket
+; Author: Adrian Golias
+
+; Q1. Re-write the following expressions in Racket and evaluate them
+;     using a Racket interpreter/compiler.
+
+; Q1.(a) (3 × (5 + (10 ÷ 5)))
+(*(+(/ 10 5) 5) 3)
+; Q1.(b) (2 + 3 + 4 + 5)
+(+ 2 3 4 5)
+; Q1.(c) (1 + (5 + (2 + (10 ÷ 3))))
+(+ 1 5 2 (/ 10 3))
+; Q1.(d) (1 + (5 + (2 + (10 ÷ 3.0))))
+(+ 1 5 2 (/ 10 3.0))
+; Q1.(e) (3 + 5) × (10 ÷ 2)
+(* (+ 3 5) (/ 10 2))
+; Q1.(f) (3 + 5) × (10 ÷ 2) + (1 + (5 + (2 + (10 ÷ 3))))
+(+ (* (+ 3 5) (/ 10 2)) (+ 1 5 2 (/ 10 3)))
+
+; Q2. Define a procedure discount that takes two arguments:
+;     An item’s initial price and a percentage discount [2].
+;     It should return the new price:
+
+;     > (discount 10 5)
+;     9.50
+;     > (discount 29.90 50)
+;     14.95
+
+(define (discount x y) (- x (* x (/ y 100.0))))
+(discount 10 5)
+(discount 29.90 50)
+
+; Q3. Define a function grcomdiv that takes two integers and
+;     returns their greatest common divisor.
+
+;     > (grcomdiv 10 15)
+;     5
+;     > (grcomdiv 64 30)
+;     2
+
+; https://rosettacode.org/wiki/Greatest_common_divisor
+(define (grcomdiv x y )
+  (if (= y 0)
+      x
+      (grcomdiv y (modulo x y))))
+
+(grcomdiv 10 15)
+(grcomdiv 64 30)
+
+; Q4. Write a function called appearances that returns the
+;     number of times its first argument appears as a
+;     member of its second argument [2].
+(define (appearances x y)
+  (count (keep (lambda (wd) (equal? x wd)) y)))
