@@ -60,8 +60,11 @@
 ; Q4. Write a function called appearances that returns the
 ;     number of times its first argument appears as a
 ;     member of its second argument [2].
-(define (appearances x y)
-  (count (keep (lambda (wd) (equal? x wd)) y)))
+(define (appearances x y) 2 (modulo x y))
+  
+;  (count (keep (lambda (z) (equal? x z)) y)))
+
+(appearances 2 10)
 
 ; Q5. Write a procedure inter that takes two lists as arguments.
 ;     It should return a list containing every element that
