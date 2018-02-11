@@ -15,17 +15,17 @@
 ;     using a Racket interpreter/compiler.
 
 ; Q1.(a) (3 × (5 + (10 ÷ 5)))
-(*(+(/ 10 5) 5) 3)
+'Q1.a: (*(+(/ 10 5) 5) 3)
 ; Q1.(b) (2 + 3 + 4 + 5)
-(+ 2 3 4 5)
+'Q1.b: (+ 2 3 4 5)
 ; Q1.(c) (1 + (5 + (2 + (10 ÷ 3))))
-(+ 1 5 2 (/ 10 3))
+'Q1.c: (+ 1 5 2 (/ 10 3))
 ; Q1.(d) (1 + (5 + (2 + (10 ÷ 3.0))))
-(+ 1 5 2 (/ 10 3.0))
+'Q1.d: (+ 1 5 2 (/ 10 3.0))
 ; Q1.(e) (3 + 5) × (10 ÷ 2)
-(* (+ 3 5) (/ 10 2))
+'Q1.e: (* (+ 3 5) (/ 10 2))
 ; Q1.(f) (3 + 5) × (10 ÷ 2) + (1 + (5 + (2 + (10 ÷ 3))))
-(+ (* (+ 3 5) (/ 10 2)) (+ 1 5 2 (/ 10 3)))
+'Q1.f: (+ (* (+ 3 5) (/ 10 2)) (+ 1 5 2 (/ 10 3)))
 
 ; Q2. Define a procedure discount that takes two arguments:
 ;     An item’s initial price and a percentage discount [2].
@@ -37,6 +37,7 @@
 ;     14.95
 
 (define (discount x y) (- x (* x (/ y 100.0))))
+'Q2:
 (discount 10 5)
 (discount 29.90 50)
 
@@ -54,16 +55,26 @@
       x
       (grcomdiv y (modulo x y))))
 
+'Q3:
 (grcomdiv 10 15)
 (grcomdiv 64 30)
 
 ; Q4. Write a function called appearances that returns the
 ;     number of times its first argument appears as a
 ;     member of its second argument [2].
-(define (appearances x y) 2 (modulo x y))
+(define z 0)
+
+(define (appearances x y)
+  (if (= (modulo x y) 0)
+      #t
+      (+ z 1)))
+
+(appearances 1 1)
+  ;2 (modulo x y))
   
 ;  (count (keep (lambda (z) (equal? x z)) y)))
 
+'Q4: 
 (appearances 2 10)
 
 ; Q5. Write a procedure inter that takes two lists as arguments.
@@ -148,6 +159,12 @@
 ;      > (select (list 1 2 3 4 5) 1)
 ;      2
 
+(define (select l x)
+  (if (= x 0)
+      (car l)
+      (select (cdr l) (- x l))))
+
+;(select (list 1 2 3 4 5) 1)
 
 
 ; Q15. Write a function perms that takes a list as its only argument,
