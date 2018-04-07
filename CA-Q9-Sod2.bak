@@ -1,0 +1,18 @@
+#lang racket
+
+; Q9. Write a function sod2 in Racket that takes three
+;     lists x, y and z of equal length and containing
+;     only 0’s and 1’s. It should return a list containing
+;     a 1 where the number of 1’s in a given position in
+;     x, y and z contains an odd nubmer of 1’s, and 0 otherwise.
+;     For example:
+;     > (sod2 (list 0 0 0 0 1 1 1 1) (list 0 0 1 1 0 0 1 1) (list 0 1 0 1 0 1 0 1))
+;     '(0 1 1 0 1 0 0 1)
+
+;     References: [1] - https://docs.racket-lang.org/reference/pairs.html#%28def._%28%28lib._racket%2Fprivate%2Fmap..rkt%29._map%29%29
+
+(define (sod2 x y z)
+  (map (lambda (x y z) (+ x y z)) x y z))
+
+(sod2 (list 0 0 0 0 1 1 1 1) (list 0 0 1 1 0 0 1 1) (list 0 1 0 1 0 1 0 1))
+; Expected output: '(0 1 1 0 1 0 0 1)
