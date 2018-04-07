@@ -62,20 +62,21 @@
 ; Q4. Write a function called appearances that returns the
 ;     number of times its first argument appears as a
 ;     member of its second argument [2].
-(define z 0)
 
-(define (appearances x y)
-  (if (= (modulo x y) 0)
-      #t
-      (+ z 1)))
+(define (appearances x y) (myquotient x y 0))
 
-(appearances 1 1)
-  ;2 (modulo x y))
-  
-;  (count (keep (lambda (z) (equal? x z)) y)))
+(define (myquotient x y z)
+  (if (< x y)
+      z
+      (myquotient (- x y) y (+ z 1))))
+;(if (< x y)
+;      z
+;      (myquotient (- x y) y (+ z 1))))
+
+
 
 'Q4: 
-(appearances 2 10)
+(appearances 10 2)
 
 ; Q5. Write a procedure inter that takes two lists as arguments.
 ;     It should return a list containing every element that
