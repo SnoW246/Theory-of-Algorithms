@@ -8,6 +8,7 @@
 ;     5
 
 ;     References: [1] - https://stackoverflow.com/questions/32854125/racket-how-to-count-the-number-of-elements-in-a-list
+;                 [2] - https://stackoverflow.com/questions/36595710/counting-non-zero-values-from-a-list-with-scheme
 
 ; Function that take list input and returns the number
 ; of non-zero elements of that list
