@@ -10,19 +10,3 @@
 ;     > (rcycle (list 1 2 3 4 5))
 ;     '(5 1 2 3 4)
 
-;     References: [1] 
-;     https://docs.racket-lang.org/guide/Lists__Iteration__and_Recursion.html
-
-(define (lcycle list)
-; Takes list input
-; returns list shifted one place to the left
-  (if (null? list)
-      '()
-      (append (cdr list)
-              (cons (car list)
-                    '()))))
-
-(lcycle '(1 2 3 4 5))
-
-
-;(define rcicle)
