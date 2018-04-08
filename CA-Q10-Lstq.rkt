@@ -18,21 +18,26 @@
 ; distance value given by the sum of the square residuals
 ; between the numbers in the lists
 (define (lstq l m)
-  (if (null? l)
-      0
-      ;(+ (lstq-squared (- (car l) (car m))) (lstq (cdr l) (cdr m)))))
-      (+ (lstq-squared (car (map (lambda (l m) (- l m)) l m))) (lstq (cdr l) (cdr m)))))
-  
   ; If list is empty
-  ;(if (null? l)
+  (if (null? l)
       ; Output 0 /do nothing
-      ;0
-      ; Else runt the list through another function to square
+      0
+      ; Else run the list through another function to square
       ; the corresponding elements & recursively run through
       ; remaining element of that list while adding the output
       ; value returned by the square function
-      ;(+ (lstq-squared l m) (lstq (cdr l) (cdr m))))
+      ;(+ (lstq-squared (- (car l) (car m))) (lstq (cdr l) (cdr m)))))
 
+      ; Else map every element of each list to its corresponding
+      ; element ((E li) = (E mi)) and subtract them from each other in
+      ; the process ((E li) - (E mi)) which creates a new single list
+      ; with mapped & subtracted values in it. Run that list through
+      ; external function to square the first element of that list,
+      ; and recursively pass the remaining elements of that list through
+      ; the square function while adding the adding the output
+      ; value returned by the square function
+      (+ (lstq-squared (car (map (lambda (l m) (- l m)) l m))) (lstq (cdr l) (cdr m)))))
+  
 ; Function that takes two lists as input and outputs the square
 ; of the first elements of those lists
 (define (lstq-squared n)
